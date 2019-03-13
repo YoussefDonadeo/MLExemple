@@ -15,6 +15,7 @@
 		826E083D2237FDF500DA0C7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 826E083B2237FDF500DA0C7A /* LaunchScreen.storyboard */; };
 		826E08482237FDF500DA0C7A /* MLNC2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E08472237FDF500DA0C7A /* MLNC2Tests.swift */; };
 		826E08532237FDF500DA0C7A /* MLNC2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826E08522237FDF500DA0C7A /* MLNC2UITests.swift */; };
+		826E086122380B1600DA0C7A /* YCTSL.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 826E086022380B1600DA0C7A /* YCTSL.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		826E084E2237FDF500DA0C7A /* MLNC2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MLNC2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		826E08522237FDF500DA0C7A /* MLNC2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLNC2UITests.swift; sourceTree = "<group>"; };
 		826E08542237FDF500DA0C7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		826E086022380B1600DA0C7A /* YCTSL.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YCTSL.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		826E08232237FDF400DA0C7A = {
 			isa = PBXGroup;
 			children = (
+				826E086022380B1600DA0C7A /* YCTSL.mlmodel */,
 				826E082E2237FDF400DA0C7A /* MLNC2 */,
 				826E08462237FDF500DA0C7A /* MLNC2Tests */,
 				826E08512237FDF500DA0C7A /* MLNC2UITests */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				826E086122380B1600DA0C7A /* YCTSL.mlmodel in Sources */,
 				826E08322237FDF400DA0C7A /* ViewController.swift in Sources */,
 				826E08302237FDF400DA0C7A /* AppDelegate.swift in Sources */,
 				826E08382237FDF400DA0C7A /* MLNC2.xcdatamodeld in Sources */,
