@@ -39,17 +39,16 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /* Initialise Core ML model
+         We create a model container to be used with VNCoreMLRequest based on our HandSigns Core ML model.
+         */
+        Model = try? VNCoreMLModel(for: SqueezeNet().model)
         /* Get the capture Device( Camera )
          and configure the Camera ( Frame layout, Session, input buffer, ecc.. )
          */
         guard let captureDevice = getDevice(Position: position) else { return }
         
         configureCamera(CaptureDevice: captureDevice)
-        
-        /* Initialise Core ML model
-         We create a model container to be used with VNCoreMLRequest based on our HandSigns Core ML model.
-         */
-        Model = try? VNCoreMLModel(for: YCTSL().model)
     }
     
     
@@ -108,13 +107,13 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate, UINaviga
  */
 extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    enum ModelType: String {
-        case Youssef = "Youssef"
-        case Carmine = "Carmine"
-        case Tavoli = "Tavoli"
-        case Ludos = "Ludos"
-        case sedie = "sedie"
-    }
+//    enum ModelType: String {
+//        case Youssef = "Youssef"
+//        case Carmine = "Carmine"
+//        case Tavoli = "Tavoli"
+//        case Ludos = "Ludos"
+//        case sedie = "sedie"
+//    }
     
     
     
@@ -168,7 +167,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
         /* Create a Core ML Vision request
          The completion block will execute when the request finishes execution and fetches a response.
          */
-        let request =  VNCoreMLRequest(model: self.Model!) { (finishedRequest, err) in
+        let request =  VNCoreMLRequest(model: Model) { (finishedRequest, err) in
             
             /* Dealing with the result of the Core ML Vision request
              The request's result is an array of VNClassificationObservation object which holds
@@ -186,22 +185,22 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             /* Depending on the identifier we set the UILabel text with it's confidence.
              We update UI on the main queue. */
             DispatchQueue.main.async {
-                switch firstResult.identifier {
-                case ModelType.Youssef.rawValue :
-                    predictionString = "Youssef👊🏽"
-                case ModelType.Carmine.rawValue :
-                    predictionString = "Carmine✌🏽"
-                case ModelType.Tavoli.rawValue :
-                    predictionString = "Tavoli🖐🏽"
-                case ModelType.sedie.rawValue :
-                    predictionString = "sedie❎"
-                case ModelType.Ludos.rawValue :
-                    predictionString = "Ludos🌈"
-                default:
-                    break
-                }
+//                switch firstResult.identifier {
+//                case ModelType.Youssef.rawValue :
+//                    predictionString = "Youssef👊🏽"
+//                case ModelType.Carmine.rawValue :
+//                    predictionString = "Carmine✌🏽"
+//                case ModelType.Tavoli.rawValue :
+//                    predictionString = "Tavoli🖐🏽"
+//                case ModelType.sedie.rawValue :
+//                    predictionString = "sedie❎"
+//                case ModelType.Ludos.rawValue :
+//                    predictionString = "Ludos🌈"
+//                default:
+//                    break
+//                }
                 
-                self.descriptionLabel.text = predictionString + "(\(firstResult.confidence))"
+                self.descriptionLabel.text = firstResult.identifier + "(\(firstResult.confidence))"
             }
         }
         
